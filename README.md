@@ -16,11 +16,11 @@ Follow these steps to set up and run the frontend in your local development envi
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/frontend-repo.git
+   git clone [https://github.com/your-username/frontend-repo.git](https://github.com/Freddy444/Comp333-react-frontend.git)
 
 2. ##Navigate to the Frontend Directory:
    ```bash
-   cd frontend-repo
+   cd ratingapp
 
 3. ##stall Dependencies:
    ```bash
