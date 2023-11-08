@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateView() {
+  const navigate = useNavigate(); // Use useNavigate for navigation
+
   // State to store the new song data
   const [newSong, setNewSong] = useState({
     artist: "",
@@ -46,6 +49,10 @@ function CreateView() {
       });
   };
 
+  const handleGoBackHome = () => {
+    navigate("/"); // Use the push method to navigate to the home route
+  };
+
   return (
     <div style={styles.container}>
       <h5 style={styles.heading}>Create a New Song</h5>
@@ -82,6 +89,9 @@ function CreateView() {
 
       <button style={styles.button} onClick={handleCreateClick}>
         Create Song
+      </button>
+      <button style={styles.button} onClick={handleGoBackHome}>
+        Go Back Home
       </button>
 
       {openCreateDialog && (
