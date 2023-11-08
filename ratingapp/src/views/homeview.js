@@ -1,5 +1,5 @@
 import styles from './homeview.module.css';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
 import { Link, useNavigate } from "react-router-dom";
@@ -35,7 +35,6 @@ function StarRating({ rating }) {
 }
 
 function HomeView() {
-  const navigate = useNavigate();
   const [songList, setSongList] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
@@ -45,6 +44,9 @@ function HomeView() {
     rating: "",
   });
   const [artistFilter, setArtistFilter] = useState("");
+  const [sortOrder, setSortOrder] = useState("desc");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = Cookies.get('name');
@@ -57,10 +59,9 @@ function HomeView() {
   }, [navigate]);
 
   const handleCreateClick = () => {
-    console.log("Create button clicked");
     setOpenCreateDialog(true);
   };
-  
+
   const fetchSongList = (username) => {
     axios.get(`http://localhost:80/index.php/music/list`)
       .then((response) => {
@@ -71,11 +72,7 @@ function HomeView() {
       });
   };
 
-  
-  
   const handleCreateSong = (event) => {
-    console.log("Creating song:", newSong);
-  
     axios.post("http://localhost:80/index.php/music/create", {
       artist: newSong.artist,
       song: newSong.song,
@@ -94,7 +91,6 @@ function HomeView() {
         console.error("Error creating or fetching song list:", error);
       });
   };
-  
 
   const filteredSongs = songList.filter((song) =>
     artistFilter
@@ -102,16 +98,28 @@ function HomeView() {
       : true
   );
 
+  const toggleSortOrder = () => {
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+  };
+
+  const sortSongs = (songs) => {
+    return songs.slice().sort((a, b) => {
+      const ratingA = parseFloat(a.rating);
+      const ratingB = parseFloat(b.rating);
+      return sortOrder === "asc" ? ratingA - ratingB : ratingB - ratingA;
+    });
+  };
+
+  const sortedSongs = sortSongs(filteredSongs);
+
   const handleLogout = () => {
     Cookies.remove('name');
     navigate("/login");
   };
 
   const navigateToCreate = (e) => {
-    e.preventDefault(); 
-    console.log("Navigating to create...");
+    e.preventDefault();
     navigate("/create", { replace: true });
-    console.log("Navigation executed!");
   };
 
   return (
@@ -124,8 +132,12 @@ function HomeView() {
           <button className={styles.logoutButton} onClick={handleLogout}>Logout</button>
         </>
       )}
+      <button className={styles.sortButton} onClick={toggleSortOrder}>
+        Sort by Rating ({sortOrder === "asc" ? "Low to High" : "High to Low"})
+      </button>
+
       <ul className={styles.songList}>
-        {filteredSongs.map((song) => (
+        {sortedSongs.map((song) => (
           <li key={song.id} className={styles.songItem}>
             <span>
               {song.song} - Artist: {song.artist}
@@ -141,7 +153,6 @@ function HomeView() {
           </li>
         ))}
       </ul>
-      
 
       <button
         className={styles.createButton}
