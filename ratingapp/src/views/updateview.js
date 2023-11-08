@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import styles from './updateview.module.css'; // Import your CSS module
+import styles from './updateview.module.css'; 
 
 function UpdateView({ onClose, songId }) {
   const [updateData, setUpdateData] = useState({
@@ -21,19 +21,24 @@ function UpdateView({ onClose, songId }) {
         const data = await response.json();
         setUpdateData(data);
       } catch (error) {
+        // Handle errors if any occur during the fetch
       }
     };
 
+    // Invoke the fetchSongDetails function when the component mounts
     fetchSongDetails();
-  }, [id]);
+  }, [id]); // Dependency array ensures that the effect runs only when 'id' changes
 
+  // Check for user authentication using cookies
   useEffect(() => {
     const name = Cookies.get('name')
     if (!name) {
+      // If user is not authenticated, navigate to the login page
       navigate('/login')
     }
-  }, [navigate]);
+  }, [navigate]); // Dependency array ensures that the effect runs only once when the component mounts
 
+  // Handler for updating the song
   const handleUpdate = () => {
     // Send a request to update the song with the provided data
     const payload = { ...updateData, "id": id };
