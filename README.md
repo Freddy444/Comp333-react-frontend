@@ -9,6 +9,8 @@
 # Frontend README
 This full-stack CRUD (Create, Read, Update, Delete) app features a React frontend that integrates with our PHP/MySQL backend through a REST API. 
 
+##NEW FEATURE
+Sorts songs from least rated to highest rated and from highest rated to least rated
 ## Setup and Run the Frontend
 
 Follow these steps to set up and run the frontend in your local development environment:
