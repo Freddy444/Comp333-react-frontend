@@ -19,6 +19,7 @@ function CreateView() {
     setOpenCreateDialog(true);
   };
 
+  // Handler to close the create dialog
   const handleCreateClose = () => {
     console.log("Create dialog closed");
     setOpenCreateDialog(false);
@@ -49,6 +50,7 @@ function CreateView() {
       });
   };
 
+  // Handler to navigate back to the home route
   const handleGoBackHome = () => {
     navigate("/"); // Use the push method to navigate to the home route
   };
@@ -57,6 +59,7 @@ function CreateView() {
     <div style={styles.container}>
       <h5 style={styles.heading}>Create a New Song</h5>
 
+      {/* Input for artist */}
       <label style={styles.label}>
         Artist:
         <input
@@ -67,6 +70,7 @@ function CreateView() {
         />
       </label>
 
+      {/* Input for song name */}
       <label style={styles.label}>
         Song:
         <input
@@ -77,6 +81,7 @@ function CreateView() {
         />
       </label>
 
+      {/* Input for song rating */}
       <label style={styles.label}>
         Rating:
         <input
@@ -87,13 +92,17 @@ function CreateView() {
         />
       </label>
 
+      {/* Button to open the create dialog */}
       <button style={styles.button} onClick={handleCreateClick}>
         Create Song
       </button>
+
+      {/* Button to navigate back to the home route */}
       <button style={styles.button} onClick={handleGoBackHome}>
         Go Back Home
       </button>
 
+      {/* Create dialog */}
       {openCreateDialog && (
         <div style={styles.dialog}>
           <h3 style={styles.dialogHeading}>Create New Song</h3>
@@ -101,10 +110,12 @@ function CreateView() {
             Add new song?
           </p>
           <ul style={styles.dialogList}>
+            {/* Display the selected song details in the dialog */}
             <li>Artist: {newSong.artist}</li>
             <li>Song: {newSong.song}</li>
             <li>Rating: {newSong.rating}</li>
           </ul>
+          {/* Buttons to confirm or cancel the creation */}
           <div style={styles.dialogButtons}>
             <button style={styles.dialogButton} onClick={handleCreateClose}>
               Cancel
@@ -119,6 +130,7 @@ function CreateView() {
   );
 }
 
+// Styles for the components
 const styles = {
   container: {
     maxWidth: "400px",
@@ -167,4 +179,5 @@ const styles = {
   },
 };
 
+// Export the component as the default export
 export default CreateView;
