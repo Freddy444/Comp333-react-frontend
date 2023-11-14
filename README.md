@@ -5,6 +5,11 @@
 - Freddy: 95%
 - Max: 5%
 
+##Working preview
+
+https://github.com/Freddy444/Comp333-react-frontend/assets/99642629/fe01363e-7842-496b-8f9f-fdbb2d986c08
+
+
 # Frontend README
 This full-stack CRUD (Create, Read, Update, Delete) app features a React frontend that integrates with our PHP/MySQL backend through a REST API. 
 
