@@ -1,65 +1,73 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function CreateView() {
-  const navigate = useNavigate(); // Use useNavigate for navigation
+const CreateView = () => {
+  const navigate = useNavigate();
 
-  // State to store the new song data
   const [newSong, setNewSong] = useState({
     artist: "",
     song: "",
     rating: "",
   });
 
-  // State to control the visibility of the create dialog
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
 
-  // Handler to open the create dialog
   const handleCreateClick = () => {
     setOpenCreateDialog(true);
   };
 
-  // Handler to close the create dialog
   const handleCreateClose = () => {
-    console.log("Create dialog closed");
     setOpenCreateDialog(false);
   };
 
-  // Handler to create a new song
   const handleCreateSong = async () => {
-    // Send a request to create the new song
-    fetch("http://localhost:80/index.php/music/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newSong),
-      mode: 'cors',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Create Song Response:", data);
-        if (data.success) {
-          console.log("Song created successfully");
-        } else {
-          console.error("Error creating song:", data.error);
-        }
-      })
-      .catch((error) => {
-        console.error("Error creating song:", error);
-      });
-  };
+    // fetch("http://localhost:80/index.php/music/create", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(newSong),
+    //   mode: 'cors',
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("Create Song Response:", data);
+    //     if (data.success) {
+    //       console.log("Song created successfully");
+    //     } else {
+    //       console.error("Error creating song:", data.error);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error creating song:", error);
+    //   });
 
-  // Handler to navigate back to the home route
+    console.log("Sending data:", newSong);
+
+    axios.post("http://localhost:80/index.php/music/create", newSong, {withCredentials: true}) .then((response) => {
+      if (response.data.success) {
+        navigate("/");
+      } else {
+        console.error(`Song not Created.`);
+        console.log(response);
+        // Handle registration failure, display an error message, etc.
+      }
+    })
+    .catch((error) => {
+      console.error("Error Logging in user:", error);
+      // Handle registration error, display an error message, etc.
+    });
+    return;
+  }
   const handleGoBackHome = () => {
-    navigate("/"); // Use the push method to navigate to the home route
+    navigate("/");
   };
 
   return (
     <div style={styles.container}>
       <h5 style={styles.heading}>Create a New Song</h5>
 
-      {/* Input for artist */}
       <label style={styles.label}>
         Artist:
         <input
@@ -70,7 +78,6 @@ function CreateView() {
         />
       </label>
 
-      {/* Input for song name */}
       <label style={styles.label}>
         Song:
         <input
@@ -81,7 +88,6 @@ function CreateView() {
         />
       </label>
 
-      {/* Input for song rating */}
       <label style={styles.label}>
         Rating:
         <input
@@ -92,17 +98,13 @@ function CreateView() {
         />
       </label>
 
-      {/* Button to open the create dialog */}
       <button style={styles.button} onClick={handleCreateClick}>
         Create Song
       </button>
-
-      {/* Button to navigate back to the home route */}
       <button style={styles.button} onClick={handleGoBackHome}>
         Go Back Home
       </button>
 
-      {/* Create dialog */}
       {openCreateDialog && (
         <div style={styles.dialog}>
           <h3 style={styles.dialogHeading}>Create New Song</h3>
@@ -110,12 +112,10 @@ function CreateView() {
             Add new song?
           </p>
           <ul style={styles.dialogList}>
-            {/* Display the selected song details in the dialog */}
             <li>Artist: {newSong.artist}</li>
             <li>Song: {newSong.song}</li>
             <li>Rating: {newSong.rating}</li>
           </ul>
-          {/* Buttons to confirm or cancel the creation */}
           <div style={styles.dialogButtons}>
             <button style={styles.dialogButton} onClick={handleCreateClose}>
               Cancel
@@ -128,39 +128,57 @@ function CreateView() {
       )}
     </div>
   );
-}
+};
 
-// Styles for the components
 const styles = {
   container: {
     maxWidth: "400px",
     margin: "auto",
+    backgroundColor: "#fff",
+    padding: "30px",
+    borderRadius: "10px",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+    transition: "transform 0.3s ease",
   },
   heading: {
     margin: "20px 0",
+    fontSize: "28px",
+    color: "#333",
+    textAlign: "center",
   },
   label: {
     display: "block",
     margin: "10px 0",
+    fontSize: "18px",
+    color: "#555",
   },
   input: {
     width: "100%",
-    padding: "8px",
-    margin: "5px 0",
+    padding: "12px",
+    margin: "8px 0",
+    border: "1px solid #ccc",
+    borderRadius: "6px",
+    fontSize: "16px",
+    transition: "border-color 0.3s ease",
+    outline: "none",
   },
   button: {
     margin: "20px 0",
-    backgroundColor: "blue",
-    color: "white",
-    padding: "10px",
+    backgroundColor: "#3498db",
+    color: "#fff",
+    padding: "14px",
     cursor: "pointer",
+    border: "none",
+    borderRadius: "8px",
+    fontSize: "18px",
+    transition: "background-color 0.3s ease",
   },
   dialog: {
     display: "block",
     marginTop: "20px",
   },
   dialogHeading: {
-    color: "blue",
+    color: "#3498db",
   },
   dialogText: {
     marginBottom: "10px",
@@ -179,5 +197,5 @@ const styles = {
   },
 };
 
-// Export the component as the default export
 export default CreateView;
+
