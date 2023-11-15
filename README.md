@@ -32,9 +32,8 @@ Follow these steps to set up and run the frontend in your local development envi
    npm install
 
 4. ##Run the Development Server:
-  ```bash
+   ```bash
    npm start
-
 
 5. Accessing the App:
 Open a web browser and go to http://localhost:3000**
