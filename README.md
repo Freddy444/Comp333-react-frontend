@@ -30,6 +30,9 @@ Follow these steps to set up and run the frontend in your local development envi
 3. ##stall Dependencies:
    ```bash
    npm install
+   npm install react-router-do
+   npm install js-cookie
+   npm install reactstrap
 
 4. ##Run the Development Server:
    ```bash
