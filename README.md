@@ -19,6 +19,8 @@ Sorts songs from least rated to highest rated and from highest rated to least ra
 
 Follow these steps to set up and run the frontend in your local development environment:
 
+Before you begin, make sure that your XAMPP for your backend is setop: Apache - port 80, MySQL - port 3000
+
 1. **Clone the Repository:**
    ```bash
    git clone [https://github.com/your-username/frontend-repo.git](https://github.com/Freddy444/Comp333-react-frontend.git)
