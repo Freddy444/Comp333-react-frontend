@@ -32,7 +32,7 @@ Before you begin, make sure that your XAMPP for your backend is setop: Apache - 
 3. ##stall Dependencies:
    ```bash
    npm install
-   npm install react-router-do
+   npm install react-router-dom
    npm install js-cookie
    npm install reactstrap
 
