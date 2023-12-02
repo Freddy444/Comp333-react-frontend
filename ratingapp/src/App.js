@@ -4,7 +4,6 @@ import React from "react";
 import './App.css';
 import HomeView from './views/homeview';
 import CreateView from './views/createview';
-import ReadView from './views/readview';
 import UpdateView from './views/updateview';
 import DeleteView from './views/deleteview';
 import LoginView from './views/loginview';
@@ -22,7 +21,6 @@ function App() {
         <Routes>
               <Route path="/" element={<HomeView />} />
               <Route path="/create" element={<CreateView />} />
-              <Route path="/read" element={<ReadView />} />
               <Route path="/update/:id" element={<UpdateView onClose={() =>{}} />} />
               <Route path="/delete/:id" element={<DeleteView onClose={() =>{}} />} />
               <Route path="/register" element={<RegisterView />} />
