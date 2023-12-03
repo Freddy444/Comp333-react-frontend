@@ -55,7 +55,7 @@ Before you begin, make sure that your XAMPP for your backend is setop: Apache - 
    ```bash
    cd ratingapp
 
-3. ##stall Dependencies:
+3. ##install Dependencies:
    ```bash
    npm install
    npm install react-router-dom
@@ -65,3 +65,5 @@ Before you begin, make sure that your XAMPP for your backend is setop: Apache - 
 4. ##Run the Development Server:
    ```bash
    npm test run
+
+5. Then press "a" to run all the test and ALL SET
