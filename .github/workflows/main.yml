@@ -26,5 +26,8 @@ jobs:
         npm install reactstrap
 
     - name: Run Tests
-      run: npm run test
+      run: |
+        cd ratingapp  # Navigate to the correct directory
+        npm run test
+
 
