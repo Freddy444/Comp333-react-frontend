@@ -16,10 +16,14 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 14
+      node-version: 14
 
     - name: Install Dependencies
       run: npm install
+      run: npm install react-router-dom
+      run: npm install js-cookie
+      run: npm install reactstrap
+
 
     - name: Run Tests
       run: npm run test
