@@ -22,10 +22,12 @@ jobs:
         node-version: 14
 
     - name: Install Dependencies
-      run: npm install
-      run: npm install react-router-dom
-      run: npm install js-cookie
-      run: npm install reactstrap
+      run: |
+        npm install
+        npm install react-router-dom
+        npm install js-cookie
+        npm install reactstrap
 
     - name: Run Tests
       run: npm run test
+
