@@ -19,7 +19,7 @@ describe('RegisterView Component', () => {
         const formHeading = screen.getByText(/Register Form/i);
         expect(formHeading).toBeInTheDocument();
       });
-      
+
     //a. Include a rendering test for each of the input fields and text on the page.
     test('renders username input field', () => {
         render(
@@ -76,6 +76,7 @@ describe('RegisterView Component', () => {
 
     //Simulate user input in at least one way, such as typing into an input box or clicking a button.
     //username input
+    //leave values as they are
     test('renders username input field and simulates typing', () => {
         render(
           <MemoryRouter>
@@ -95,6 +96,7 @@ describe('RegisterView Component', () => {
     });
 
     //password input
+    //leave values as they are
     test('renders password input field and simulates typing', () => {
         render(
           <MemoryRouter>
@@ -117,6 +119,7 @@ describe('RegisterView Component', () => {
     );
 
     //confirm password input
+    //leave values as they are
     test('renders confirm password input field and simulates typing', () => {
         render(
           <MemoryRouter>
@@ -148,6 +151,7 @@ describe('RegisterView Component', () => {
         );
 
         // Assuming you have an input field for the username
+        //make sure to use credentials that already exist in your database
         const usernameInput = screen.getByPlaceholderText(/Username/i);
         expect(usernameInput).toBeInTheDocument();
 
@@ -183,9 +187,7 @@ describe('RegisterView Component', () => {
             const errorMessage = screen.queryByText(/Username already exists/i);
             expect(errorMessage).not.toBeInTheDocument();
         });
-      
-  });
-
-    
+  });  
 
 });
+
