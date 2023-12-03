@@ -66,4 +66,5 @@ Before you begin, make sure that your XAMPP for your backend is setop: Apache - 
    ```bash
    npm test run
 
-5. Then press "a" to run all the test and ALL SET
+5. Then press "a" to run all the test and ALL SET. Here is what you should be getting:
+<img width="871" alt="Screenshot 2023-12-03 at 6 49 38 AM" src="https://github.com/Freddy444/Comp333-react-frontend/assets/99642629/9ea27a8a-bc1d-45a4-a31b-5db076aa70fe">
