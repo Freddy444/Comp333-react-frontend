@@ -69,6 +69,7 @@ describe('LoginView Component', () => {
 
 
     //Test and detect an incorrect value at least once.
+    //enter credentials that are not in your database. or atleast one credential has to be wrong
     test('shows error for login failure and does not navigate', async () => {
         // Mocking the axios post method to simulate login failure
         axios.post.mockRejectedValue({ response: { data: { success: false, message: 'Invalid credentials' } } });
