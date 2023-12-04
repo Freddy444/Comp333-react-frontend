@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Set working directory
-      run: cd $GITHUB_WORKSPACE/ratingapp
+      run: cd $GITHUB_WORKSPACE/ratingapp && ls
   
     - name: Use Node.js 14.x
       uses: actions/setup-node@v2
