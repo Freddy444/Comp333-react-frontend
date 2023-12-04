@@ -9,9 +9,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # Set the working directory to your app's root
     - name: Set working directory
-      run: cd ratingapp
+      run: cd $GITHUB_WORKSPACE/ratingapp
   
     - name: Use Node.js 14.x
       uses: actions/setup-node@v2
