@@ -30,4 +30,4 @@ jobs:
       run: npm install reactstrap
   
     - name: Run tests
-      run: npm test
+      run: npm test run
