@@ -37,5 +37,5 @@ jobs:
 
       # Runs the unit tests using npm
       - name: Run tests
-        run: npm test run       
+        run: npm test      
 
