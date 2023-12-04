@@ -9,7 +9,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
       "@types/react-dom": "^18.0.5",
       "ag-grid-community": "^29.1.0",
       "ag-grid-react": "^29.1.0",
